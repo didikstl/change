@@ -32,3 +32,4 @@ def tets_templates(request):
     }
 
     return render(request, 'test.html', context)
+

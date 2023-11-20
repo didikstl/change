@@ -8,5 +8,3 @@ urlpatterns = [
     path('rate/list', rate_list),
     path('contactus/list', message),
     path('template/', tets_templates),
-
-]
