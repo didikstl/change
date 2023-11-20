@@ -8,7 +8,6 @@ def hello(request):
 
 
 def rate_list(request):
-
     rates = Rate.objects.all()
     context = {
         'rates': rates
