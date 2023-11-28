@@ -6,14 +6,26 @@
 
 {% block content %}
 
+    <a href="/rate/create">Create</a><br>
+
     {% for rate in rates %}
-        <h1>Id: {{ rate.id }}
-            Buy: {{ rate.buy }}
-            Sell: {{ rate.sell }}
-            Created: {{ rate.created }}
-            Type: {{ rate.type }}
-            Source: {{ rate.source }}<br>
-        </h1>
+
+        <table>
+            <tr>
+                <td><a href="/rate/details/{{ rate.id }}/"><h3>Details</h3></a></td>
+                <td style="background-color: greenyellow"><h3>Id: {{ rate.id }}</h3></td>
+                <td style="background-color: green"><h3>Buy: {{ rate.buy }}</h3></td>
+                <td style="background-color: red"><h3>Sell: {{ rate.sell }}</h3></td>
+                <td style="background-color: blue"><h3>Created: {{ rate.created }}</h3></td>
+                <td style="background-color: white"><h3>Type: {{ rate.type }}</h3></td>
+                <td style="background-color: orange"><h3>Source: {{ rate.source }}</h3></td>
+                <td><a href="/rate/update/{{ rate.id }}/"><h3>Edit</h3></a></td>
+                <td><a href="/rate/delete/{{ rate.id }}/"><h3>Delete</h3></a></td>
+
+
+        </table>
+
+
     {% endfor %}
 
 {% endblock content %}

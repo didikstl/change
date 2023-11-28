@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    message_list
+{% endblock title %}
+
+{% block content %}
+
+    <a href="/message/create">Message</a>
+
+    {% for info in infos %}
+
+        <table>
+            <tr>
+                <td><a href="/message/details/{{ info.id }}/"><h3>Details_info</h3></a></td>
+                <td style="background-color: greenyellow"><h3>Id: {{ info.id }}</h3></td>
+                <td style="background-color: yellow"><h1>Email: {{ info.email }}</h1></td>
+                <td style="background-color: green"><h1>Subject: {{ info.subject }}</h1></td>
+                <td style="background-color: red"><h1>Message: {{ info.message }}</h1></td>
+                <td><a href="/message/update/{{ info.id }}/"><h3>Edit</h3></a></td>
+                <td><a href="/message/delete/{{ info.id }}/"><h3>Delete</h3></a></td>
+
+        </table>
+
+
+    {% endfor %}
+
+{% endblock content %}
