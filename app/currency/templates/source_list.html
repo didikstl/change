@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    source_list
+{% endblock title %}
+
+{% block content %}
+
+
+    <table>
+        <tr>
+            <td style="background-color: greenyellow"><h3>Id: {{ bank.id }}</h3></td>
+            <td style="background-color: green"><h3>Source_url: {{ bank.source_url }}</h3></td>
+            <td style="background-color: red"><h3>Bank name: {{ bank.source_name }}</h3></td>
+            <td><a href="/source/create/{{ bank.id }}/"><h3>Edit</h3></a></td>
+
+
+    </table>
+
+
+
+{% endblock content %}
