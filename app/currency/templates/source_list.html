@@ -6,16 +6,23 @@
 
 {% block content %}
 
+    <a href="{% url 'source-create' %}">Source</a>
 
-    <table>
-        <tr>
-            <td style="background-color: greenyellow"><h3>Id: {{ bank.id }}</h3></td>
-            <td style="background-color: green"><h3>Source_url: {{ bank.source_url }}</h3></td>
-            <td style="background-color: red"><h3>Bank name: {{ bank.source_name }}</h3></td>
-            <td><a href="/source/create/{{ bank.id }}/"><h3>Edit</h3></a></td>
+    {% for source in object_list %}
+
+        <table>
+            <tr>
+                <td><a href="{% url 'source-details' source.id %}"><h3>Details</h3></a></td>
+                <td style="background-color: greenyellow"><h3>Id: {{ source.id }}</h3></td>
+                <td style="background-color: green"><h3>Source_url: {{ source.source_url }}</h3></td>
+                <td style="background-color: red"><h3>Bank name: {{ source.source_name }}</h3></td>
+                <td><a href="{% url 'source-update' source.id %}"><h3>Edit</h3></a></td>
+                <td><a href="{% url 'source-delete' source.id %}"><h3>Delete</h3></a></td>
 
 
-    </table>
+        </table>
+
+    {% endfor %}
 
 
 

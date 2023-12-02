@@ -1,30 +1,26 @@
+from django.conf import settings
+from django.contrib.staticfiles import views
+from django.urls import re_path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 from django.contrib import admin
-from django.urls import path
-from app.currency.views import (
-    hello,
-    tests_templates
+from django.urls import path, include
 
-)
-from app.currency.rate_CL import Rates
-from app.currency.contactUs_CL import Contacts
-from app.currency.source_CL import Sourse_of_inform
-
-
+from app.currency.views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/word', hello),
-    path('rate/list/', Rates.rate_list),
-    path('rate/create/', Rates.rate_create),
-    path('rate/update/<int:pk>/', Rates.rate_update),
-    path('rate/delete/<int:pk>/', Rates.rate_delete),
-    path('rate/details/<int:pk>/', Rates.rate_details),
-    path('message/list/', Contacts.message_list),
-    path('message/create/', Contacts.message_create),
-    path('message/update/<int:pk>/', Contacts.message_update),
-    path('message/delete/<int:pk>/', Contacts.message_delete),
-    path('message/details/<int:pk>/', Contacts.message_details),
-    path('source/list/', Sourse_of_inform.source_list),
-    path('source/create/', Sourse_of_inform.source_create),
-    path('template/', tests_templates),
+
+    path('', include('app.currency.urls')),
+
+    path('', IndexView.as_view()),
+
+    path("__debug__/", include("debug_toolbar.urls")),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
+
+if settings.DEBUG:
+    urlpatterns += [
+        re_path(r"^static/(?P<path>.*)$", views.serve),
+    ]
